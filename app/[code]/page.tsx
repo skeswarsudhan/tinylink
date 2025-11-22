@@ -1,17 +1,19 @@
-import { supabase } from "@/lib/supabase";
 import { redirect, notFound } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 
 type RedirectPageProps = {
-  params: {
-    code: string;
-  };
+  params: Promise<{ code: string }>;
 };
 
-export default async function RedirectPage({ params }: RedirectPageProps) {
-  const { data, error } = await supabase
+export default async function RedirectPage(props: RedirectPageProps) {
+  const { code } = await props.params;  
+
+  const supabase_client = supabase;  
+
+  const { data, error } = await supabase_client
     .from("links")
     .select("*")
-    .eq("code", params.code)
+    .eq("code", code)
     .single();
 
   if (error || !data) return notFound();
@@ -21,9 +23,9 @@ export default async function RedirectPage({ params }: RedirectPageProps) {
     .from("links")
     .update({
       clicks: data.clicks + 1,
-      last_clicked: new Date()
+      last_clicked: new Date(),
     })
-    .eq("code", params.code);
+    .eq("code", code);
 
   redirect(data.url);
 }

@@ -1,17 +1,19 @@
 import { supabase } from "@/lib/supabase";
 import { NextRequest } from "next/server";
 
-type Params = {
-  params: {
+type RouteProps = {
+  params: Promise<{
     code: string;
-  };
+  }>;
 };
 
-export async function GET(req: NextRequest, { params }: Params) {
+export async function GET(req: NextRequest, props: RouteProps) {
+  const { code } = await props.params; // ✅ FIX
+
   const { data, error } = await supabase
     .from("links")
     .select("*")
-    .eq("code", params.code)
+    .eq("code", code)
     .single();
 
   if (error || !data) {
@@ -21,7 +23,9 @@ export async function GET(req: NextRequest, { params }: Params) {
   return Response.json(data);
 }
 
-export async function DELETE(req: NextRequest, { params }: Params) {
-  await supabase.from("links").delete().eq("code", params.code);
+export async function DELETE(req: NextRequest, props: RouteProps) {
+  const { code } = await props.params; // ✅ FIX
+
+  await supabase.from("links").delete().eq("code", code);
   return new Response("OK", { status: 200 });
 }
