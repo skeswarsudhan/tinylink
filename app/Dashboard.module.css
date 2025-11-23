@@ -1,0 +1,50 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 16px;
+}
+
+.header {
+  margin-bottom: 48px;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.iconLarge {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #2563eb 0%, #9333ea 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.iconWhite {
+  width: 28px;
+  height: 28px;
+  color: white;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin: 0;
+}

@@ -1,13 +1,27 @@
 import LinkForm from "@/components/LinkForm";
 import LinksTable from "@/components/LinksTable";
+import { Link2 } from "lucide-react";
+import styles from "./Dashboard.module.css";
 
 export default function Dashboard() {
   return (
-    <div className="p-6 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4">TinyLink Dashboard</h1>
+    <div className={styles.container}>
+      <div className={styles.wrapper}>
+        <div className={styles.header}>
+          <div className={styles.headerContent}>
+            <div className={styles.iconLarge}>
+              <Link2 className={styles.iconWhite} />
+            </div>
+            <div>
+              <h1 className={styles.title}>TinyLink Dashboard</h1>
+              <p className={styles.subtitle}>Shorten, share, and track your links</p>
+            </div>
+          </div>
+        </div>
 
-      <LinkForm />
-      <LinksTable />
+        <LinkForm />
+        <LinksTable />
+      </div>
     </div>
   );
 }
