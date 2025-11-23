@@ -112,10 +112,10 @@ export default async function StatsPage(props: StatsPageProps) {
               <div>
                 <p className={styles.shortLinkLabel}>Short Link</p>
                 <code className={styles.shortLinkCode}>
-                  /code/{code}
+                  https://tinylink-6jg3.vercel.app/{code}
                 </code>
               </div>
-              <CopyButton code={code} />
+              {/* <CopyButton code={code} /> */}
             </div>
           </div>
         </div>
