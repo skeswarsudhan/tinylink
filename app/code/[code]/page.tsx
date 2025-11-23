@@ -29,7 +29,7 @@ export default async function StatsPage(props: StatsPageProps) {
             <span className={styles.notFoundEmoji}>🔍</span>
           </div>
           <h1 className={styles.notFoundTitle}>Link Not Found</h1>
-          <p className={styles.notFoundText}>The short link you're looking for doesn't exist.</p>
+          <p className={styles.notFoundText}>The short link you are looking for doesnot exist.</p>
           <Link href="/" className={styles.backButton}>
             <ArrowLeft className={styles.backIcon} />
             Back to Dashboard
